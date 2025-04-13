@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pénzügyi Kezelő</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Pénzügyi Kezelő</h1>
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#transaction-form">Új Tranzakció</a>
+      <a href="#transaction-list">Tranzakciók</a>
+      <a href="#savings-manager">Megtakarítások</a>
+    </nav>
+    <button id="theme-toggle">Téma váltás</button>
+  </header>
+
+  <main>
+    <div id="notification"></div>
+
+    <section id="dashboard">
+      <h2>Áttekintés</h2>
+      <div class="summary">
+        <div>Egyenleg: <span id="balance">0</span> Ft</div>
+        <div>Bevételek: <span id="total-income">0</span> Ft</div>
+        <div>Kiadások: <span id="total-expense">0</span> Ft</div>
+      </div>
+      <canvas id="financialChart"></canvas>
+      <div class="dashboard-buttons">
+        <button id="sync-btn">Szinkronizálás</button>
+        <button id="export-btn">CSV Export</button>
+        <button id="reminder-btn">Emlékeztető</button>
+      </div>
+    </section>
+
+    <section id="transaction-form">
+      <h2>Új Tranzakció</h2>
+      <form id="form">
+        <label for="type">Típus:</label>
+        <select id="type">
+          <option value="income">Bevétel</option>
+          <option value="expense">Kiadás</option>
+        </select>
+        <label for="amount">Összeg (Ft):</label>
+        <input type="number" id="amount" required>
+        <label for="category">Kategória:</label>
+        <input type="text" id="category">
+        <label for="date">Dátum:</label>
+        <input type="date" id="date">
+        <label for="description">Leírás:</label>
+        <textarea id="description"></textarea>
+        <button type="submit">Mentés</button>
+      </form>
+    </section>
+
+    <section id="transaction-list">
+      <h2>Tranzakciók</h2>
+      <ul id="transactions"></ul>
+    </section>
+
+    <section id="savings-manager">
+      <h2>Megtakarítások</h2>
+      <div class="savings-summary">Összes megtakarítás: <span id="total-savings">0</span> Ft</div>
+      <form id="savings-form">
+        <label for="savings-amount">Összeg (Ft):</label>
+        <input type="number" id="savings-amount" required>
+        <button type="submit">Hozzáadás</button>
+      </form>
+      <ul id="savings-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Készítette: Pénzügyi Kezelő App</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
